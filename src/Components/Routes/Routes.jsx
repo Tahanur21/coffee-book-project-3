@@ -4,6 +4,8 @@ import ErrorPage from "../ErrorPage/ErrorPage";
 import Home from "../Pages/Home";
 import Coffees from "../Pages/Coffees";
 import Dashboard from "../Pages/Dashboard";
+import { Component } from "react";
+import CoffeeCards from "../CoffeeCards/CoffeeCards";
 
 const Routes = createBrowserRouter([
     {
@@ -12,10 +14,16 @@ const Routes = createBrowserRouter([
         errorElement: <ErrorPage/>,
         children : [
             {
-                index: true,
                 path: '/',
                 Component: Home,
-                loader: ()=> fetch('../../../public/categories.json')
+                loader: ()=> fetch('../../../public/categories.json'),
+                children: [
+                    {
+                        path: '/coffeeCards/:category',
+                        Component: CoffeeCards,
+                        loader: ()=> fetch('../../../public/coffees.json')
+                    }
+                ]
             },
             {
                 path: '/coffees',

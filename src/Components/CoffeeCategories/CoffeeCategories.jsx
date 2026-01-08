@@ -2,10 +2,12 @@ import { Link } from "react-router";
 
 const CoffeeCategories = ({categories}) => {
   return (
-      <div role="tablist" className="w-full tabs tabs-lift">
+      <div role="tablist" className="tabs tabs-lift flex flex-col lg:flex-row justify-evenly items-center">
         {
         categories.map(category=>
-        <Link key={category.id} role="tab" className="tab flex justify-around">
+        <Link
+        to={`/coffeeCards/${category.category}`}
+        key={category.id} role="tab" className="tab">
           {
             category.category
           }
