@@ -10,7 +10,9 @@ const Home = () => {
       {/* category button */}
       <CoffeeCategories categories={data} />
       {/* children outlet */}
+      <div className="my-4">
       <Outlet/>
+      </div>
     </div>
   );
 };

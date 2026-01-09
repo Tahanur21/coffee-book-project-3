@@ -51,7 +51,7 @@ const NavBar = () => {
             </ul>
           </div>
           <Link to={"/"} className="btn btn-ghost text-xl">
-            daisyUI
+            Coffee_Book
           </Link>
         </div>
         <div className="navbar-end hidden lg:flex">

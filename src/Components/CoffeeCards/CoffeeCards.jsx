@@ -1,15 +1,20 @@
 import { useEffect, useState } from "react";
-import { useLoaderData, useParams } from "react-router";
+import { Link, useLoaderData, useParams } from "react-router";
 import Cards from "../CoffeeCategories/Cards";
 
 const CoffeeCards = () => {
     const data = useLoaderData();
     const {category} = useParams();
-    const [coffees,setCoffees] = useState([]);
+    const [coffees,setCoffees] = useState(data);
     useEffect(()=>{
-        const filterData = [...data].filter(coffees=>coffees.category === category);
+        if(category){
+            const filterData = [...data].filter(coffees=>coffees.category === category);
         // eslint-disable-next-line react-hooks/set-state-in-effect
         setCoffees(filterData)
+        }
+        else{
+            setCoffees(data.slice(0,6))
+        }
     },[data,category]);
 
     console.log(category)
@@ -27,6 +32,12 @@ const CoffeeCards = () => {
                 />
             )
             }
+            <div>
+                {/* i can aslo use navigate hook */}
+                <Link to='/coffees'>
+                    <button className="btn btn-warning text-white">View All</button>
+                </Link>
+            </div>
         </div>
     );
 };
